@@ -1,0 +1,28 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type":"module",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "nodemon": "^3.1.0",
+    "tronweb": "^4.1.0",
+    "tronweb-typings": "^1.0.1",
+    "web3": "^4.7.0",
+    "web3-core": "^4.3.2",
+    "web3-core-helpers": "^1.10.3",
+    "web3-eth": "^4.6.0",
+    "web3-eth-abi": "^4.2.1",
+    "web3-eth-contract": "^4.4.0",
+    "web3-providers-http": "^4.1.0",
+    "web3-utils": "^4.2.3"
+  }
+}
