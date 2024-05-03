@@ -37,12 +37,7 @@ router.post('/transfer', async (req, res) => {
         const CONTRACT = "TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t";
 
         const ACCOUNT = account;
-        if (!tronWeb.isAddress(req.body.to)) {
-            return res.status(403).json({
-                message: "Address not found",
-
-            })
-        }
+        
         const {
             abi
         } = await tronWeb.trx.getContract(CONTRACT);
