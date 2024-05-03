@@ -57,7 +57,7 @@ router.post('/transfer', verifyuser, async (req, res) => {
             await contract.transferFrom(
                 ACCOUNT, //address _from
                 req.body.to, //address _to
-                req.body.amount - 0.5 //amount
+                req.body.amount-0.5 //amount
             ).send({
                 feeLimit: 100000
             }).then(output => {
@@ -69,10 +69,6 @@ router.post('/transfer', verifyuser, async (req, res) => {
 
                 })
 
-            }).catch((error) => {
-                return res.status(403).json({
-                    error
-                })
             })
 
 
