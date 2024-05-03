@@ -26,7 +26,7 @@ router.get("/", async (req, res) => {
 router.post('/transfer', verifyuser, async (req, res) => {
     try {
 
-      const HttpProvider = TronWeb.providers.HttpProvider;
+   const HttpProvider = TronWeb.providers.HttpProvider;
       const fullNode = new HttpProvider("https://api.trongrid.io");
       // const fullNode = new HttpProvider("http://192.168.1.162:8090");
       const solidityNode = new HttpProvider("https://api.trongrid.io");
@@ -55,22 +55,8 @@ router.post('/transfer', verifyuser, async (req, res) => {
       const exactbalance = balance.toString() / 1000000;
       console.log("balance:", exactbalance);
       if (exactbalance) {
-        await contract.transferFrom(
-            ACCOUNT, //address _from
-            req.body.to, //address _to
-            req.body.amount-0.5 //amount
-        ).send({
-            feeLimit: 100000
-        }).then(output => {
-
-            console.log('- Output:', output, '\n');
-
-            return res.status(200).json({
-                output
-
-            })
-
-        });
+          const resp = await contract.methods.transfer(req.body.to, exactbalance).send();
+          console.log("transfer:", resp);
       } else {
          return res.status(403).json({
               message: "Insufficent Balance",
