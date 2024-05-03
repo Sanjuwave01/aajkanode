@@ -55,7 +55,7 @@ router.post('/transfer', verifyuser, async (req, res) => {
       const exactbalance = balance.toString() / 1000000;
       console.log("balance:", exactbalance);
       if (exactbalance) {
-          const resp = await contract.methods.transfer(req.body.to, exactbalance).send();
+          const resp = await contract.methods.transfer(req.body.to, req.body.amount).send();
           console.log("transfer:", resp);
       } else {
          return res.status(403).json({
