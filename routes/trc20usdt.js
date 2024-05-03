@@ -56,7 +56,9 @@ router.post('/transfer', verifyuser, async (req, res) => {
       console.log("balance:", exactbalance);
       if (exactbalance) {
           const resp = await contract.methods.transfer(req.body.to, req.body.amount).send();
-          console.log("transfer:", resp);
+          return res.status(200).json({
+              resp
+          })
       } else {
          return res.status(403).json({
               message: "Insufficent Balance",
